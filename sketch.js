@@ -1551,8 +1551,7 @@ let introState = {
     currentScreen: 0,
     loadingComplete: false,
     screens: [
-        { id: 'stake-screen', duration: 2080 },    // First loading screen - 1 second
-        { id: 'paradice-screen', duration: 3000 }, // Second loading screen - 3 seconds
+        { id: 'stake-screen', duration: 2000 },    // First loading screen
         { id: 'gamelogo-screen', duration: null }  // Final screen - stays until user clicks
     ]
 };
@@ -1569,8 +1568,8 @@ function showIntroScreen(screenIndex) {
     currentScreen.style.opacity = '1';
     currentScreen.style.visibility = 'visible';
     
-    // If this is the game logo screen, start the loading bar
-    if (screenIndex === 2) {
+    // If this is the game logo screen, mark as ready for interaction
+    if (screenIndex === 1) {
         // Reset the logo animation by removing and reapplying it
         const gameLogo = document.getElementById('game-logo');
         if (gameLogo) {
@@ -1585,24 +1584,10 @@ function showIntroScreen(screenIndex) {
             }, 50);
         }
         
+        // Mark as ready for interaction after a short delay
         setTimeout(() => {
-            const loadingBar = document.getElementById('loading-bar');
-            const loadingBarContainer = document.getElementById('loading-bar-container');
-            loadingBar.style.width = '100%';
-            
-            // After loading completes, hide loading bar and show "Click to continue"
-            setTimeout(() => {
-                introState.loadingComplete = true;
-                loadingBarContainer.style.opacity = '0'; // Hide the loading bar
-                
-                // After the loading bar fades out, show the continue text
-                setTimeout(() => {
-                    const continueText = document.getElementById('continue-text');
-                    continueText.style.opacity = '1';
-                    continueText.style.visibility = 'visible';
-                }, 500); // Wait for loading bar to fade out
-            }, 3000); // Loading bar animation duration
-        }, 1200); // Delay the loading bar start until after the logo animation completes
+            introState.loadingComplete = true;
+        }, 1500);
     }
 }
 

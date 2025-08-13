@@ -63,7 +63,47 @@
         <!-- Game Message -->
         <div id="game-message" class="game-message"></div>
         
-        <!-- Canvas will be created by p5.js -->
+        <!-- Game UI -->
+        <div class="game-container">
+            <!-- Canvas holder -->
+            <div id="sketch-holder"></div>
+            
+            <!-- Game UI Overlay -->
+            <div class="game-ui">
+                <!-- Balance Display -->
+                <div class="balance-display">
+                    <span class="balance-label">Balance:</span>
+                    <span id="balance-value">$10.00</span>
+                </div>
+                
+                <!-- Bet Controls -->
+                <div class="bet-controls">
+                    <button id="bet-down" class="bet-btn">-</button>
+                    <span id="bet-value">$0.10</span>
+                    <button id="bet-up" class="bet-btn">+</button>
+                </div>
+                
+                <!-- Play Button -->
+                <button id="play-button" class="play-btn">PLAY</button>
+                
+                <!-- Payout Display -->
+                <div class="payout-display">
+                    <span class="payout-label">Payout:</span>
+                    <span id="payout-value">$0.00</span>
+                </div>
+                
+                <!-- Multiplier Display -->
+                <div id="multiplier-container" class="multiplier-container">
+                    <span class="multiplier-label">Multiplier:</span>
+                    <span id="multiplier-value">1.00x</span>
+                </div>
+                
+                <!-- Turbo Button -->
+                <button id="turbo-btn" class="turbo-btn" title="Turbo Mode">
+                    <img id="turbo-icon" src="assets/turbo_innactive.png" alt="Turbo">
+                </button>
+            </div>
+        </div>
     </div>
 
     <!-- Scripts -->
