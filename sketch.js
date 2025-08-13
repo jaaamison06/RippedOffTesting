@@ -1664,11 +1664,26 @@ document.addEventListener('DOMContentLoaded', function() {
         authenticateWithRGS().then(() => {
             // We'll start the game after intro screens
         }).catch((error) => {
-            // Show error to user instead of falling back to demo mode
-            showAuthenticationError(error);
+            // Fall back to demo mode instead of showing error
+            console.log('Authentication failed, running in demo mode:', error);
+            gameState.authenticated = true;
+            gameState.balance = 1000000; // Demo balance
+            gameState.balanceCurrency = 'USD';
+            gameState.currentBet = 100000; // Demo bet amount
+            gameState.minBet = 100000;
+            gameState.maxBet = 10000000;
+            gameState.stepBet = 100000;
         });
     } else {
-        showAuthenticationError(new Error('Missing sessionID or rgsUrl parameters'));
+        // Run in demo mode when no authentication parameters
+        console.log('No authentication parameters, running in demo mode');
+        gameState.authenticated = true;
+        gameState.balance = 1000000; // Demo balance
+        gameState.balanceCurrency = 'USD';
+        gameState.currentBet = 100000; // Demo bet amount
+        gameState.minBet = 100000;
+        gameState.maxBet = 10000000;
+        gameState.stepBet = 100000;
     }
 });
 
